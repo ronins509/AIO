@@ -1,0 +1,135 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "34905146",
+      "name": "网络管理",
+      "font_class": "wangluoguanli",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "40933331",
+      "name": "内存",
+      "font_class": "neicun",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "34956118",
+      "name": "克隆16",
+      "font_class": "kelong",
+      "unicode": "e724",
+      "unicode_decimal": 59172
+    },
+    {
+      "icon_id": "36470408",
+      "name": "任务管理24",
+      "font_class": "renwuguanli",
+      "unicode": "e74b",
+      "unicode_decimal": 59211
+    },
+    {
+      "icon_id": "36470409",
+      "name": "重新操作16",
+      "font_class": "zhongxincaozuo",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
+    },
+    {
+      "icon_id": "40555757",
+      "name": "文件分布类型32",
+      "font_class": "wenjianfenbuleixing",
+      "unicode": "e751",
+      "unicode_decimal": 59217
+    },
+    {
+      "icon_id": "40933065",
+      "name": "镜像状态32",
+      "font_class": "jingxiangzhuangtai",
+      "unicode": "e752",
+      "unicode_decimal": 59218
+    },
+    {
+      "icon_id": "40933066",
+      "name": "iso32",
+      "font_class": "iso",
+      "unicode": "e753",
+      "unicode_decimal": 59219
+    },
+    {
+      "icon_id": "40933067",
+      "name": "镜像32",
+      "font_class": "jingxiang",
+      "unicode": "e754",
+      "unicode_decimal": 59220
+    },
+    {
+      "icon_id": "43755574",
+      "name": "虚拟设备节点32",
+      "font_class": "xunishebeijiedian",
+      "unicode": "e757",
+      "unicode_decimal": 59223
+    },
+    {
+      "icon_id": "45304016",
+      "name": "GPU管理18",
+      "font_class": "GPUguanli",
+      "unicode": "e763",
+      "unicode_decimal": 59235
+    },
+    {
+      "icon_id": "45304017",
+      "name": "gpu32",
+      "font_class": "gpu",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    },
+    {
+      "icon_id": "45550375",
+      "name": "厂商32",
+      "font_class": "changshang",
+      "unicode": "e767",
+      "unicode_decimal": 59239
+    },
+    {
+      "icon_id": "45550376",
+      "name": "分配GPU16",
+      "font_class": "fenpeiGPU",
+      "unicode": "e768",
+      "unicode_decimal": 59240
+    },
+    {
+      "icon_id": "45550377",
+      "name": "纠错32",
+      "font_class": "jiucuo",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "45550378",
+      "name": "取消GPU分配16",
+      "font_class": "quxiaoGPUfenpei",
+      "unicode": "e76a",
+      "unicode_decimal": 59242
+    },
+    {
+      "icon_id": "45550379",
+      "name": "所属物理机32",
+      "font_class": "suoshuwuliji",
+      "unicode": "e76b",
+      "unicode_decimal": 59243
+    },
+    {
+      "icon_id": "46364891",
+      "name": "断电保护32",
+      "font_class": "duandianbaohu",
+      "unicode": "e76c",
+      "unicode_decimal": 59244
+    }
+  ]
+}
