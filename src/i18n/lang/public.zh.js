@@ -5,9 +5,8 @@ let pub = {
     dashboard: "服务概况",
     operation: "操作",
     notice: "提示",
-    login:"登录",
-    user_management:"用户管理",
-    set:"设置",
+    user_management: "用户管理",
+    set: "设置",
     /*button*/
     btn_delete: "删除",
     btn_refresh: "刷新",
@@ -51,18 +50,18 @@ let pub = {
     size: "大小",
     please_enter_one: "请输入{0}",
     //placeholder
-    user_name_placeholder:"请输入用户名",
-    pwd_placeholder:"请输入密码",
+    user_name_placeholder: "请输入用户名",
+    pwd_placeholder: "请输入密码",
     //login
-    login : "登录",
-    login_error_410 : "会话超时！",
-    company_copyright:"龙存（苏州）科技有限公司",
-    copyright:"版权所有",
-    name_pwd_error:"用户名或密码错误",
-    service_connect_failed:"服务连接失败",
-    not_master_service:"访问的节点不是主管理服务节点",
-    login_failed:"登录失败",
+    login: "登录",
+    login_error_410: "会话超时！",
+    company_copyright: "龙存（苏州）科技有限公司",
+    copyright: "版权所有",
+    name_pwd_error: "用户名或密码错误",
+    service_connect_failed: "服务连接失败",
+    not_master_service: "访问的节点不是主管理服务节点",
+    login_failed: "登录失败",
 }
-export const i18n ={};
-Object.assign(i18n,pub,store,cloud);
+export const i18n = {};
+Object.assign(i18n, pub, store, cloud);
 //   i18n

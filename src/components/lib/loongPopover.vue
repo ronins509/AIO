@@ -1,33 +1,36 @@
 <template>
-    <div class="popover" :class="Msgdata.position">
+    <div class="popover" :class="data.position" @mouseover="show" @mouseout="hide">
       <div class="lg-pop-arrow"></div>
       <div
         class="lg-pop-inner"
-        :width="Msgdata.width"
-      >{{Msgdata.content.startsWith('i18n.') ? $t(Msgdata.content) : Msgdata.content}}</div>
+        :width="data.width"
+        v-html="$t(data.content)"
+      >{{data.content.startsWith('i18n.') ? $t(data.content) : data.content}}</div>
     </div>
 </template>
 <script>
+/*父调用子方法 */
 export default {
   name: "LoongPopover",
-  /*props:{
+  props:{
         data:{}
-    },*/
+    },
   data() {
     return {
-      Msgdata: {
-        content: "tishi",
+        content: "",
         width: "390px",
         position: "bottom",
         bgColor: "#333",
-        fontColor: "#fff"
-      }
+        fontColor: "#fff",
+        isShow:false
     };
   },
   methods: {
-    getData(data) {
-      this.Msgdata = data;
-      // console.log(this.Msgdata)
+    show(){
+      this.isShow = true;
+    },
+    hide(){
+      this.isShow = false;
     }
   }
 };

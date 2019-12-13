@@ -1,23 +1,23 @@
 <template>
   <div class="main">
     <h1>This is an main page</h1>
-    <LoongPopover></LoongPopover>
+    <LoongPopover :data="Msgdata">{{msg}}</LoongPopover>
   </div>
 </template>
 <script>
-import LoongPopover from "@/components/lib/loongPopover";
+import LoongPopover from "@/components/lib/loongPopover.vue";
 export default {
     components:{
         LoongPopover,
     },
     data(){
         return{
-            msgdata:{
-                content:"i18n.store_servermgr_del_selected_device_tip",
-                width:"390px",
-                position:"left",
-                bgColor:"",
-                fontColor:""
+            msg:'nnfff',
+            Msgdata:{
+                content:"i18n.cloud_vn_pn_type_tip",
+                width:"300px",
+                position:"top",
+                isShow:true
             }
         }
     },
