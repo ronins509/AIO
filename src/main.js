@@ -7,6 +7,11 @@ import "./assets/css/public.css"; //公共样式
 import "./assets/font/loongui/iconfont";
 import "./assets/font/icon.css";
 
+//popover
+import "./components/loongPopover/loongPopover";
+import "./components/loongPopover/loongPopover.less";
+
+
 Vue.use(VueI18n);
 
 Vue.config.productionTip = false;
