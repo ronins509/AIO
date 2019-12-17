@@ -9,7 +9,7 @@ Vue.directive('popover', {
         let $poparrow = document.createElement("div");
         let $popinner = document.createElement("div");
         $popover.id = "tip";
-        $popover.className = "popover wsw " + value.position;
+        $popover.className = "popover wsw " + Object.keys(binding.modifiers)[0];
         $poparrow.className = "lg-pop-arrow";
         $popinner.className = "lg-pop-inner";
         $popinner.style.width = value.width;
@@ -29,7 +29,7 @@ Vue.directive('popover', {
           x = el.offsetLeft + scrollX,
           y = el.offsetTop + scrollY;
         let top, left;
-        switch (value.position) {
+          switch (Object.keys(binding.modifiers)[0]) {
           case "top":
             top = y - tipH + 55,
               left = x + (elW - tipW) / 2 + mlw;
