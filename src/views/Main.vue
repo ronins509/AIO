@@ -12,7 +12,7 @@
 import loongDate from "@/components/lib/loongDate";
 export default {
   components: {
-    loongDate
+    loongDate,
   },
   data() {
     return {
@@ -21,8 +21,8 @@ export default {
         width: "390px"
       },
       date:{
-
-      }
+          type:"time",
+      },
     };
   },
   methods: {}

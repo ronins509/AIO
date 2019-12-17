@@ -1,11 +1,49 @@
 <template>
-  <div class="date"></div>
+  <div class="datepicker">
+    <input class="loong-date-input" type="text" />
+    <div class="loong-date-tablec">
+      <table class="calendar">
+        <thead>
+          <tr>
+            <th>
+              <div class="step-icon">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#icon-rilizuo" />
+                </svg>
+              </div>
+            </th>
+            <th colspan="5">
+				<div class="header-month-year btn-active">{{DateI18n.December}}</div>
+			</th>
+            <th>
+              <div class="step-icon">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#icon-riliyou" />
+                </svg>
+              </div>
+			</th>
+          </tr>
+          <tr>
+			  <th v-for="day in DayI18n" :key="day">{{day}}</th>
+		  </tr>
+        </thead>
+        <tbody>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+      </table>
+    </div>
+  </div>
 </template>
 <script>
+import moment from "moment";
 export default {
   name: "loongDate",
-  props:{
-	  date:Object
+  props: {
+    date: {}
   },
   data() {
     return {
@@ -22,14 +60,7 @@ export default {
           September: "Sept",
           October: "Oct",
           November: "Nov",
-          December: "Dec",
-          Sunday: "Sun",
-          Monday: "Mon",
-          Tuesday: "Tue",
-          Wednesday: "Wed",
-          Thursday: "Thu",
-          Friday: "Fri",
-          Saturday: "Sat"
+          December: "Dec"
         },
         zh: {
           January: "1月",
@@ -43,7 +74,20 @@ export default {
           September: "9月",
           October: "10月",
           November: "11月",
-          December: "12月",
+          December: "12月"
+        }
+	  },
+	  loongDayI18n:{
+		  en:{
+          Sunday: "Sun",
+          Monday: "Mon",
+          Tuesday: "Tue",
+          Wednesday: "Wed",
+          Thursday: "Thu",
+          Friday: "Fri",
+          Saturday: "Sat"
+		  },
+		  zh:{
           Sunday: "日",
           Monday: "一",
           Tuesday: "二",
@@ -51,10 +95,13 @@ export default {
           Thursday: "四",
           Friday: "五",
           Saturday: "六"
-        }
+		  }
 	  },
-	  Datei18n:{}
-	  
+	  DateI18n: {},
+	  DayI18n:{},
+	  currentValue:"",//当前值
+	  type:"default",//使用类型 时间：time，日期：date，默认：时间加日期
+	  currentDate:[],//当前日期
     };
   },
   created() {
@@ -62,26 +109,22 @@ export default {
   },
   methods: {
     getLang() {
-	  const lang = localStorage.getItem("lang");
+      const lang = localStorage.getItem("lang");
       if (lang === "zh" || lang === "zh-CN") {
-		  this.Datei18n = this.loongDateI18n.zh;
-        // return Datei18n;
+		this.DateI18n = this.loongDateI18n.zh;
+		this.DayI18n = this.loongDayI18n.zh;
       } else {
-		  this.Datei18n = this.loongDateI18n.en;
-        // return Datei18n;
+		this.DateI18n = this.loongDateI18n.en;
+		this.DayI18n = this.loongDayI18n.en;
       }
-    }
-    // dateI18n(code) {
-    //   const lang = localStorage.getItem("lang");
-    //   if(lang === 'zh' || lang === 'zh-CN'){
-    // 	//   console.log(code)
-    // 	  return this.loongDateI18n.lang.code
-    //   }
-    // }
+	},
+	initData(){
+
+	}
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scroped>
 .datepicker * {
   box-sizing: border-box;
   padding: 0;
@@ -312,7 +355,7 @@ export default {
 
 .loong-date-tablec {
   background: #fff;
-  display: none;
+//   display: none;
   position: absolute;
   z-index: 999;
   padding: 0 5px;
