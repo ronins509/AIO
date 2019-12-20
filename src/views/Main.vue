@@ -1,18 +1,15 @@
 <template>
   <div class="main">
     <h1>This is an main page</h1>
-    <loongDate :date="date"></loongDate>
-    <div
-      class="txt"
-      v-popover.right="{content:$t(popover.content),width:popover.width}"
-    >气泡提示</div>
+    <loongDate :data="date" class="date"></loongDate>
+    <div class="txt" v-popover.right="{content:$t(popover.content),width:popover.width}">气泡提示</div>
   </div>
 </template>
 <script>
 import loongDate from "@/components/lib/loongDate";
 export default {
   components: {
-    loongDate,
+    loongDate
   },
   data() {
     return {
@@ -20,9 +17,12 @@ export default {
         content: "i18n.cloud_vn_pn_type_tip",
         width: "390px"
       },
-      date:{
-          type:"time",
-      },
+      date: {
+        type: "time",
+        // date: "2014-10-15 11:24:10",
+        name: "test",
+        width: "320px"
+      }
     };
   },
   methods: {}
@@ -34,5 +34,8 @@ export default {
   position: absolute;
   left: 50px;
   top: 200px;
+}
+.date{
+    padding-left: 20px;
 }
 </style>
