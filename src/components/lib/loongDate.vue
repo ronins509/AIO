@@ -46,7 +46,9 @@
         </div>
       </div>
 	  <div class="date-time-container">
-		  
+		  <div class="sel-container"></div>
+		  <div class="sel-container"></div>
+		  <div class="sel-container"></div>
 	  </div>
     </div>
   </div>
@@ -322,5 +324,18 @@ export default {
   background-color: #1188dd;
   color: #fff;
   border-radius: 2px;
+}
+.date-time-container{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	font-family: PingFangSC-Regular;
+	font-weight: 400;
+	padding-left: 5px;
+	.sel-container{
+		color: #1455a2;
+		position: relative;
+	}
 }
 </style>
