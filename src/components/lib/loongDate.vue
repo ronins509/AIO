@@ -4,10 +4,10 @@
       class="loong-date-input"
       type="text"
       :width="width"
-      ref="dateInput"
       v-model="currentValue"
+      @focus="isShow=true"
     />
-    <div class="loong-date-tablec">
+    <div class="loong-date-tablec" v-show="isShow">
       <div class="calendar">
         <div class="calendar-header flex">
           <div class="step-btn" @click="prev">
@@ -19,8 +19,8 @@
             <div
               class="header-month-year btn-active"
               v-if="toggleFlag == false"
-            >{{Month}}&nbsp;&nbsp;&nbsp;{{Year}}</div>
-            <div class="header-year btn-active" v-else>{{Year}}</div>
+            >{{firstDate[1]}}月&nbsp;&nbsp;&nbsp;{{firstDate[0]}}</div>
+            <div class="header-year btn-active" v-else>{{firstDate[0]}}</div>
           </div>
           <div class="step-btn" @click="next">
             <svg class="icon" aria-hidden="true">
@@ -45,11 +45,18 @@
           <span v-for="(mon,index) in DateI18n" :key="index" @click="checkMonth(index)">{{mon}}</span>
         </div>
       </div>
-	  <div class="date-time-container">
-		  <div class="sel-container"></div>
-		  <div class="sel-container"></div>
-		  <div class="sel-container"></div>
-	  </div>
+      <div class="date-time-container" v-show="!toggleFlag">
+        <input type="text" ref="hh" class="sel-container" v-model="currentTime[0]" />
+        <span class="time-split">:</span>
+        <input type="text" ref="mm" class="sel-container" v-model="currentTime[1]" />
+        <span class="time-split">:</span>
+        <input type="text" ref="ss" class="sel-container" v-model="currentTime[2]" />
+        <div class="time-btn" @click="picker">
+          <svg class="icon">
+            <use href="#icon-rizhijieguodui" />
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -116,9 +123,10 @@ export default {
       },
       DateI18n: {},
       DayI18n: {},
+      isShow: false,
       name: this.data.name || "",
       width: this.data.width || "",
-      type: this.data.type || "default",
+      // type: this.data.type || "default",
       currentValue:
         moment(this.data.date).format("YYYY-MM-DD HH:mm:ss") ||
         moment().format("YYYY-MM-DD hh:mm:ss"), //当前时间值 默认为系统时间
@@ -127,8 +135,6 @@ export default {
       dateArray: [], //当月日期列表
       firstDate: [], //当月1号
       toggleFlag: false, //对应toggle方法 默认日期
-      Month: "",
-      Year: "",
       checked: null
     };
   },
@@ -152,7 +158,7 @@ export default {
     initData() {
       //初始化数据
       this.currentTime = moment(this.data.date)
-        .format("hh:mm:ss")
+        .format("HH:mm:ss")
         .split(":");
       this.currentDate = moment(this.data.date)
         .format("YYYY-MM-DD")
@@ -161,7 +167,6 @@ export default {
         .startOf("month")
         .format("YYYY-MM-DD")
         .split("-");
-      this.getMonth(this.currentDate[1], this.currentDate[0]);
       this.getDateArray();
     },
     toggle() {
@@ -170,13 +175,37 @@ export default {
     },
     prev() {
       //上一个月或者上一年
+      this.checked = null;
+      if (this.toggleFlag) {
+        // true为年
+        let prevYear = moment(this.firstDate.join("-"))
+          .startOf("month")
+          .add(-1, "year");
+        this.firstDate = prevYear.format("YYYY-MM-DD").split("-");
+      } else {
+        let prevMonth = moment(this.firstDate.join("-"))
+          .startOf("month")
+          .add(-1, "month");
+        this.firstDate = prevMonth.format("YYYY-MM-DD").split("-");
+      }
+      this.getDateArray();
     },
     next() {
       //下一个月或者下一年
-    },
-    getMonth(month, year) {
-      this.Month = this.DateI18n[Object.keys(this.DateI18n)[month - 1]];
-      this.Year = year;
+      this.checked = null;
+      if (this.toggleFlag) {
+        // true为年
+        let nextYear = moment(this.firstDate.join("-"))
+          .startOf("month")
+          .add(1, "year");
+        this.firstDate = nextYear.format("YYYY-MM-DD").split("-");
+      } else {
+        let nextMonth = moment(this.firstDate.join("-"))
+          .startOf("month")
+          .add(1, "month");
+        this.firstDate = nextMonth.format("YYYY-MM-DD").split("-");
+      }
+      this.getDateArray();
     },
     getDateArray() {
       let day = moment(this.firstDate.join("-")).day();
@@ -214,9 +243,11 @@ export default {
     },
     checkDate(day, index) {
       this.checked = index;
-	  let checkDay = day.join("-");
-	  let checkTime = moment().format("HH:mm:ss");
-      this.currentValue = checkDay +" "+checkTime;
+      this.currentDate.splice(0, 1, day[0]);
+      this.currentDate.splice(1, 1, day[1]);
+      this.currentDate.splice(2, 1, day[2]);
+      this.currentValue =
+        this.currentDate.join("-") + " " + this.currentTime.join(":");
     },
     checkMonth(index) {
       let firstDate = this.firstDate;
@@ -226,6 +257,26 @@ export default {
       firstDate.splice(1, 1, month);
       this.toggle();
       this.getDateArray();
+    },
+    picker() {
+      let hh = this.$refs.hh.value,
+        mm = this.$refs.mm.value,
+        ss = this.$refs.ss.value;
+      if (hh.length == 2 && mm.length == 2 && ss.length == 2) {
+        this.currentTime.splice(0, 1, hh);
+        this.currentTime.splice(1, 1, mm);
+        this.currentTime.splice(2, 1, ss);
+      } else {
+        hh = hh < 10 ? "0" + hh : hh;
+        mm = mm < 10 ? "0" + mm : mm;
+        ss = ss < 10 ? "0" + ss : ss;
+        this.currentTime.splice(0, 1, hh);
+        this.currentTime.splice(1, 1, mm);
+        this.currentTime.splice(2, 1, ss);
+        this.currentValue =
+          this.currentDate.join("-") + " " + this.currentTime.join(":");
+      }
+      this.isShow = false;
     }
   }
 };
@@ -325,17 +376,43 @@ export default {
   color: #fff;
   border-radius: 2px;
 }
-.date-time-container{
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	font-family: PingFangSC-Regular;
-	font-weight: 400;
-	padding-left: 5px;
-	.sel-container{
-		color: #1455a2;
-		position: relative;
-	}
+.date-time-container {
+  border-top: 1px solid rgb(238, 238, 238);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  padding-left: 5px;
+  .sel-container {
+    color: #1455a2;
+    position: relative;
+    width: 40px;
+    height: 28px;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    text-align: center;
+  }
+  .time-split {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+  .time-btn {
+    width: 40px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: rgb(238, 247, 255);
+    color: #1188dd;
+    margin-left: 20px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(221, 238, 255);
+    }
+  }
 }
 </style>

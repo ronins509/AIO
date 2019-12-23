@@ -18,8 +18,6 @@ export default {
         width: "390px"
       },
       date: {
-        type: "time",
-        // date: "2014-10-15 11:24:10",
         name: "test",
         width: "320px"
       }
