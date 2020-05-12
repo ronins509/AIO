@@ -3,19 +3,35 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import VueI18n from "vue-i18n";
-import "./assets/css/public.css"; //公共样式
+// import "@/assets/less/variable.less";
+// import "./assets/css/public.css"; //公共样式
 import "./assets/font/loongui/iconfont";
 import "./assets/font/icon.css";
-
+// import setTheme from"./assets/less/theme";
 //popover
 import "./components/loongPopover/loongPopover";
-import "./components/loongPopover/loongPopover.less";
 
-
+// 基础样式
+async function setTheme (name) {
+  const head = document.head;
+  const link  = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = `../less/${name}/public/theme.less`;
+  head.appendChild(link)
+}
 Vue.use(VueI18n);
 
 Vue.config.productionTip = false;
 
+const skin = 'light';
+require( "./assets/less/"+skin+"/components/loongPopover/index.less");
+
+setTheme(skin);
+//组件内样式
+Vue.prototype._componentsGetLess = function(filename){
+    return require("./assets/less/" +skin+ "/components/"+filename+"/index.less");
+  }
 const i18n = new VueI18n({
   locale:localStorage.getItem('lang'),
   messages:{

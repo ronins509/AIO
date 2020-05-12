@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="main-left" :class="{menuShink:toggleFlag}">
+    <div class="main-left cf" :class="{menuShink:toggleFlag}">
       <div class="logo-wrap">
         <div class="logo-box">
           <img src="@/assets/image/logo.png" />
@@ -157,5 +157,6 @@ change(){
 };
 </script>
 <style lang="less">
-@import url(~@/assets/css/menu.less);
+@import url(~@/assets/css/menu.css);
+@import url(~@/assets/css/public.css);
 </style>

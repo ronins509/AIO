@@ -1,0 +1,133 @@
+@import "../../../variable.less";
+.loong-date-input {
+    padding: 0px;
+    padding-left: 10px;
+    border-radius: 2px;
+    border: 1px solid @border-deep;
+    outline: none;
+    height: 32px;
+    line-height: 32px;
+    box-sizing: border-box;
+    font-size: 12px;
+    min-width: 180px;
+    background: @bg-color-black;
+    &:hover {
+      border: 1px solid @font-color-click;
+    }
+  }
+  .loong-date-tablec {
+    background: @bg-color-black;
+    position: absolute;
+    z-index: 999;
+    padding: 0 5px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.19);
+    border-radius: 1px;
+  }
+  .calendar {
+    position: relative;
+    font-family: "Century Gothic", "Segoe UI", Calibri, Arial;
+    font-size: 12px;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    z-index: 4;
+    color: @font-colorf;
+    text-align: center;
+    background-color: @bg-color-black;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    .header-month-year,
+    .header-year {
+      width: 180px;
+      height: 28px;
+      margin-left: 3px;
+      font-size: 12px;
+      font-family: PingFangSC-Medium;
+      line-height: 28px;
+      color: @font-color9;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .header-year {
+      width: 100px;
+    }
+    .btn-active {
+      background: @font-color6;
+      border-radius: 2px;
+    }
+  }
+  .step-btn {
+    width: 30px;
+    height: 28px;
+    margin: 0 auto;
+    line-height: 28px;
+    border-radius: 2px;
+    color: #1188dd;
+    cursor: pointer;
+  }
+  .date-week,
+  .date-body,
+  .date-body-month {
+    width: 271px;
+    line-height: 28px;
+    span {
+      display: inline-block;
+      width: 38px;
+      cursor: pointer;
+    }
+  }
+  .date-body-month {
+    width: 152px;
+  }
+  .date-now {
+    color: #1188dd;
+  }
+  .month-now {
+    font-weight: bold;
+  }
+  .checked {
+    background-color: #1188dd;
+    color: #fff;
+    border-radius: 2px;
+  }
+  .date-time-container {
+    border-top: 1px solid rgb(238, 238, 238);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    padding-left: 5px;
+    .sel-container {
+      color: #1455a2;
+      position: relative;
+      width: 40px;
+      height: 28px;
+      border: 1px solid #ced4da;
+      border-radius: 2px;
+      text-align: center;
+    }
+    .time-split {
+      display: inline-block;
+      width: 20px;
+      text-align: center;
+    }
+    .time-btn {
+      width: 40px;
+      height: 30px;
+      border-radius: 2px;
+      background-color: rgb(238, 247, 255);
+      color: #1188dd;
+      margin-left: 20px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(221, 238, 255);
+      }
+    }
+  }
